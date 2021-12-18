@@ -1,8 +1,5 @@
 from PIL import Image
 
-im1 = Image.open('image1.jpg')
-im2 = Image.open('image2.jpg')
-
 def get_concat_h(im1, im2):
     dst = Image.new('RGB', (im1.width + im2.width, im1.height))
     dst.paste(im1, (0, 0))
@@ -15,5 +12,9 @@ def get_concat_v(im1, im2):
     dst.paste(im2, (0, im1.height))
     return dst
 
-get_concat_h(im1, im2).save('output_h.jpg')
-get_concat_v(im1, im2).save('output_v.jpg')
+def merge(imagefp1, imagefp2, outputfp, attach='h'):
+    im1 = Image.open(imagefp1)
+    im2 = Image.open(imagefp2)
+    match attach:
+        case 'h': get_concat_h(im1, im2).save(outputfp)
+        case 'v': get_concat_v(im1, im2).save(outputfp)
