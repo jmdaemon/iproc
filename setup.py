@@ -25,8 +25,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'merge = iproc.merge:merge',
-            'braillify = iproc.braillify:main',
+            'iproc = iproc.cli:main',
         ],
     },
     test_suite='tests',

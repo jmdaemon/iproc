@@ -1,4 +1,3 @@
-import argparse
 import numpy as np
 from PIL import Image
 
@@ -26,7 +25,8 @@ def preprocess(fp):
     image = image.convert(mode="1")
     return image
 
-def braillify(image: Image, brailles: list):
+def braillify(image: Image):
+    global brailles
     pix = np.array(image)
     mat = np.array([[0, 3],
                     [1, 4],
@@ -41,14 +41,3 @@ def braillify(image: Image, brailles: list):
             out += brailles[window.sum()]
         out += "\n"
     return out
-
-def main():
-    parser = argparse.ArgumentParser(description='Executable file for Labs')
-    parser.add_argument('image'     , type=str, help='File path to the current lab directory')
-
-    args = parser.parse_args()
-
-    imagefp = args.image
-    image = preprocess(imagefp)
-
-    print(braillify(image, brailles))
