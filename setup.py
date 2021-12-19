@@ -23,5 +23,11 @@ setup(
     install_requires=[
         'argparse',
     ],
+    entry_points={
+        'console_scripts': [
+            'merge = iproc.merge:merge',
+            'braillify = iproc.braillify:main',
+        ],
+    },
     test_suite='tests',
 )
