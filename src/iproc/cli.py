@@ -14,7 +14,7 @@ def main():
     match cmd:
         case 'braillify':
             fp = opts[0]
-            braillify(preprocess(fp))
+            print(braillify(preprocess(fp)))
         case 'merge':
             imfp1   = opts[0]
             imfp2   = opts[1]
